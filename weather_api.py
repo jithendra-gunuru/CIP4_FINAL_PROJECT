@@ -2,7 +2,7 @@ import requests
 
 API_BASE_URL1 = "http://api.openweathermap.org/geo/1.0/direct?"
 API_BASE_URL2 = "https://api.openweathermap.org/data/2.5/weather?"
-API_KEY = ""
+API_KEY = "a9664181096a9d07f0b38b2baf6ba7bd"
 def search_location(city_name):
     params ={
         "q" : city_name,
@@ -44,19 +44,19 @@ def display_format_weather_info(weather_info):
         temperature = weather_info["main"]
         for temp in temperature:
             if temp == 'temp':
-                print(temp + "  ==>  " + str(int(temperature[temp])-273.15) + "°C" ) 
-            if temp == 'feels_like':
-                print(temp + "  ==>  " + str(int(temperature[temp])-273.15) + "°C" ) 
+                print(temp + "  ==>  " + str(round(float(temperature[temp])-273.15, 2)) + "°C" )
+            if temp == 'feels_likefeels_like':
+                print(temp + "  ==>  " + str(round(float(temperature[temp])-273.15, 2)) + "°C" )
             if temp == 'temp_min':
-                print(temp + "  ==>  " + str(int(temperature[temp])-273.15) + "°C" )
+                print(temp + "  ==>  " + str(round(float(temperature[temp])-273.15, 2)) + "°C" )
             if temp == 'temp_max':
-                print(temp + "  ==>  " + str(int(temperature[temp])-273.15) + "°C" )
+                print(temp + "  ==>  " + str(round(float(temperature[temp])-273.15, 2)) + "°C" )
             if temp == 'pressure':
                 print(temp + "  ==>  " + str(temperature[temp])+ " Hectopascal(hPa)")
             if temp == 'humidity':
                 print(temp + "  ==>  " + str(temperature[temp]) + "%")
                 print("Humidity refers to the amount of water vapor present in the air compared to the maximum amount of water vapor the air can hold at that specific temperature.")                                  
-        print("visibility ==> " + str(weather_info["visibility"]))
+        print("visibility ==> " + str(weather_info["visibility"]) + 'm')
         print("wind ==> " + str(weather_info["wind"]))
 def main():
     city_name = input("enter city name to display weather: ")
