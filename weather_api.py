@@ -45,7 +45,7 @@ def display_format_weather_info(weather_info):
         for temp in temperature:
             if temp == 'temp':
                 print(temp + "  ==>  " + str(round(float(temperature[temp])-273.15, 2)) + "°C" )
-            if temp == 'feels_likefeels_like':
+            if temp == 'feels_like':
                 print(temp + "  ==>  " + str(round(float(temperature[temp])-273.15, 2)) + "°C" )
             if temp == 'temp_min':
                 print(temp + "  ==>  " + str(round(float(temperature[temp])-273.15, 2)) + "°C" )
