@@ -4,12 +4,10 @@ API_BASE_URL1 = "http://api.openweathermap.org/geo/1.0/direct?"
 API_BASE_URL2 = "https://api.openweathermap.org/data/2.5/weather?"
 API_KEY = ""
 def search_location(city_name):
-    
     params ={
         "q" : city_name,
         "appid" : API_KEY
     }
-
     response_geo = requests.get(API_BASE_URL1, params)
     return response_geo.json()
 
