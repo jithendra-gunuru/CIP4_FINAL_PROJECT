@@ -2,7 +2,7 @@ import requests
 
 API_BASE_URL1 = "http://api.openweathermap.org/geo/1.0/direct?"
 API_BASE_URL2 = "https://api.openweathermap.org/data/2.5/weather?"
-API_KEY = "fb049738ebccf16cb4ea2efbdf559f11"
+API_KEY = ""
 def search_location(city_name):
     
     params ={
@@ -23,22 +23,41 @@ def collect_co_ordinates(co_ordinates):
             location["latitude"] = lat
             location["longitude"] = lon
             return location
+        else:
+            print("we do not have this city weather report")
+            print("run again and enter new city")
         
 def retrive_weather_info(map_location):
-    params = {
-          "lat" : map_location["latitude"],
-          "lon" : map_location["longitude"],
-          "appid" : API_KEY
-     }
-    response_weather = requests.get(API_BASE_URL2, params)
-    return response_weather.json()
+    if map_location:
+        params = {
+            "lat" : map_location["latitude"],
+            "lon" : map_location["longitude"],
+            "appid" : API_KEY
+        }
+        response_weather = requests.get(API_BASE_URL2, params)
+        return response_weather.json()
 
 
 def display_format_weather_info(weather_info):
-     print("weather_report: ", weather_info["weather"][0]['main'])
-     print("weather_report description: ", weather_info["weather"][0]['description'])
-     
-            
+     if weather_info:
+        print("weather_report: ", weather_info["weather"][0]['main'])
+        print("weather_report description: ", weather_info["weather"][0]['description'])
+        print(weather_info["main"])
+        temperature = weather_info["main"]
+        for temp in temperature:
+            if temp == 'temp':
+                print(temp + "  ==>  " + str(int(temperature[temp])-273.15) + "°C" ) 
+            if temp == 'feels_like':
+                print(temp + "  ==>  " + str(int(temperature[temp])-273.15) + "°C" ) 
+            if temp == 'temp_min':
+                print(temp + "  ==>  " + str(int(temperature[temp])-273.15) + "°C" )
+            if temp == 'temp_max':
+                print(temp + "  ==>  " + str(int(temperature[temp])-273.15) + "°C" )
+            if temp == 'pressure':
+                print(temp + "  ==>  " + str(temperature[temp])+ " Hectopascal(hPa)")
+            if temp == 'humidity':
+                print(temp + "  ==>  " + str(temperature[temp]) + "%")
+                print("Humidity refers to the amount of water vapor present in the air compared to the maximum amount of water vapor the air can hold at that specific temperature.")                                  
 
 def main():
     city_name = input("enter city name to display weather: ")
@@ -49,3 +68,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
