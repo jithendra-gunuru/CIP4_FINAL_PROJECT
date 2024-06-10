@@ -56,7 +56,8 @@ def display_format_weather_info(weather_info):
             if temp == 'humidity':
                 print(temp + "  ==>  " + str(temperature[temp]) + "%")
                 print("Humidity refers to the amount of water vapor present in the air compared to the maximum amount of water vapor the air can hold at that specific temperature.")                                  
-
+        print("visibility ==> " + str(weather_info["visibility"]))
+        print("wind ==> " + str(weather_info["wind"]))
 def main():
     city_name = input("enter city name to display weather: ")
     co_ordinates = search_location(city_name)
