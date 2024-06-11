@@ -1,0 +1,5 @@
+https://openweathermap.org/current#example_JSON
+
+https://openweathermap.org/api/geocoding-api
+
+https://home.openweathermap.org/api_keys
