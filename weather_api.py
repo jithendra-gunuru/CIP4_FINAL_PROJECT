@@ -2,7 +2,7 @@ import requests
 
 API_BASE_URL1 = "http://api.openweathermap.org/geo/1.0/direct?"
 API_BASE_URL2 = "https://api.openweathermap.org/data/2.5/weather?"
-API_KEY = "d4fef8354c4bea2b5e1eec3ee5dc0ec3"
+API_KEY = ""
 
 def search_location(city_name):
     params ={
